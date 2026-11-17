@@ -1,0 +1,472 @@
+﻿# Build a AAA-Quality 3D Endless Runner Game Using Three.js
+
+
+## 1. Your role
+
+
+Act as a senior AAA game developer, Three.js engineer, technical artist, 3D environment designer, and gameplay programmer.
+
+
+Your task is to design, code, and deliver a fully playable, visually impressive **3D endless runner game inspired by Temple Run**, but with original characters, environments, assets, and visual identity.
+
+
+This must be an actual playable browser game, not a static 3D scene, animation showcase, or conceptual prototype.
+
+
+The primary goal is to achieve **AAA-inspired visual quality with simplified arcade gameplay**.
+
+
+Prioritize:
+- High-quality 3D graphics
+- Realistic human character
+- Fluid movement and animations
+- Cinematic environment and lighting
+- Responsive controls
+- Smooth gameplay at 60 FPS on capable desktop hardware
+- Clean, maintainable code
+
+
+## 2. Technology stack
+
+
+Build the game with:
+
+
+- **Three.js (3JS):** Core 3D rendering engine
+- **WebGL:** Hardware-accelerated rendering
+- **TypeScript:** Game logic and application architecture
+- **Vite:** Development server and build tooling
+- **GLTF / GLB:** 3D characters and environment assets
+- **Three.js AnimationMixer:** Character animations
+- **GSAP (optional):** Camera transitions and UI animations
+- **Post-processing:** Bloom, ambient occlusion, tone mapping, and cinematic effects where supported
+
+
+Use physically based rendering (PBR), realistic materials, dynamic shadows, environment lighting, and optimized 3D assets.
+
+
+Do not use basic geometric shapes as substitutes for the main character or primary environmental assets.
+
+
+If available, use high-quality, properly licensed 3D assets. If an external asset cannot be downloaded, implement a working fallback and clearly identify the asset that needs replacing.
+
+
+## 3. Game concept
+
+
+**Working title: Midnight Run**
+
+
+Create a third-person 3D endless runner set in a cinematic, abandoned city at night.
+
+
+The player controls a realistic human character running continuously along a road filled with obstacles.
+
+
+The camera follows from behind, similar to Temple Run, but with a more realistic visual style and modern cinematic presentation.
+
+
+The environment should feel atmospheric, mysterious, and visually rich.
+
+
+### Core gameplay
+
+
+- The character automatically runs forward.
+- The player switches between three lanes.
+- The player jumps over obstacles.
+- The player slides underneath obstacles.
+- The player collects glowing energy tokens.
+- The running speed increases gradually.
+- Collisions with dangerous obstacles end the run.
+- The score increases with distance travelled.
+- The player can restart immediately after losing.
+
+
+Keep the first version simple. Do not add unnecessary features such as enemies, combat, multiplayer, complex inventories, or story missions.
+
+
+## 4. Main character design
+
+
+Create a **realistic adult male human character** with the following appearance:
+
+
+- Black leather biker jacket with realistic material reflections
+- Dark fitted jeans
+- Black boots
+- Short, naturally styled hair
+- Athletic but realistic body proportions
+- Detailed face and hands
+- Realistic clothing folds, seams, and textures
+- Natural body movement and weight distribution
+
+
+The character must look like a believable human being, not a cartoon, blocky avatar, mannequin, or low-poly placeholder.
+
+
+### Character animation
+
+
+Implement:
+
+
+1. Continuous running animation
+2. Smooth left-lane transition
+3. Smooth right-lane transition
+4. Jump animation with appropriate takeoff and landing
+5. Slide animation
+6. Collision/stumble animation
+7. Idle animation for the start screen
+
+
+Use properly rigged character animations with smooth blending.
+
+
+The character must not slide across the ground unnaturally, float, or move like a static object.
+
+
+Ensure the running animation adjusts appropriately as movement speed increases.
+
+
+## 5. Environment and world design
+
+
+Create a **cinematic abandoned city at night**, with a premium AAA-inspired atmosphere.
+
+
+### Visual direction
+
+
+- Wet asphalt roads with realistic reflections
+- Tall buildings on both sides
+- Neon storefront signs
+- Street lamps and scattered environmental lights
+- Subtle atmospheric fog
+- Broken barriers and road debris
+- Occasional sparks or steam effects
+- Dark blue, black, and muted orange color palette
+- Distant city skyline
+- Depth and environmental scale
+
+
+The level should feel like a professionally art-directed game environment rather than a generic 3D demo.
+
+
+### World generation
+
+
+Build a modular endless environment system.
+
+
+- Recycle road segments as the character advances.
+- Spawn obstacles using controlled procedural generation.
+- Maintain three clearly defined lanes.
+- Ensure at least one safe route exists through every obstacle sequence.
+- Avoid impossible obstacle combinations.
+- Increase difficulty gradually over time.
+- Prevent visible gaps or abrupt transitions between environment segments.
+
+
+Use object pooling and asset reuse to improve performance.
+
+
+## 6. Camera system
+
+
+Use a third-person chase camera.
+
+
+Camera requirements:
+
+
+- Positioned behind and slightly above the player
+- Character remains clearly visible in the lower central portion of the frame
+- Smooth tracking using interpolation
+- Slight camera sway during running
+- Subtle camera movement during jumping and landing
+- Dynamic field of view as running speed increases
+- Cinematic framing without obstructing obstacle visibility
+- No camera clipping through the environment
+
+
+The camera should feel stable, responsive, and polished.
+
+
+## 7. Controls
+
+
+Implement the following keyboard controls:
+
+
+| Input | Action |
+|---|---|
+| Left arrow / A | Move left |
+| Right arrow / D | Move right |
+| Up arrow / W / Space | Jump |
+| Down arrow / S | Slide |
+| P / Escape | Pause or resume |
+| Enter | Start / Restart |
+
+
+Requirements:
+
+
+- Lane switching should be smooth, not instantaneous.
+- Inputs must feel responsive.
+- Prevent double jumps unless explicitly enabled.
+- Sliding must have an appropriate duration.
+- Collision detection must match the visible character and obstacles.
+- Support swipe controls for mobile devices where practical.
+
+
+## 8. Obstacles and collectibles
+
+
+Include three obstacle types:
+
+
+**Type 1: Road barricades**
+The player must jump over these.
+
+
+**Type 2: Overhead barriers**
+The player must slide underneath these.
+
+
+**Type 3: Large roadblocks**
+The player must switch lanes to avoid them.
+
+
+Also include glowing energy tokens placed along different lanes.
+
+
+Tokens should have subtle rotation, glow, and collection effects.
+
+
+Create particle effects and sound feedback when tokens are collected.
+
+
+## 9. AAA-inspired graphics and polish
+
+
+Make the visual presentation a major priority.
+
+
+Implement wherever technically appropriate:
+
+
+- Physically Based Rendering (PBR)
+- High-resolution textures for hero assets
+- HDR environment lighting
+- Dynamic directional and point lighting
+- Contact and soft shadows
+- ACES filmic tone mapping
+- Color grading
+- Ambient occlusion
+- Subtle bloom around neon lights
+- Realistic roughness and metalness
+- Atmospheric depth and fog
+- Smooth animation blending
+- Particle effects
+- Motion-based camera effects
+- High-quality anti-aliasing
+
+
+Avoid excessive effects that reduce readability or cause major performance problems.
+
+
+The target is a cinematic, realistic, AAA-inspired browser game, not a claim that a web prototype must match a full-budget AAA production.
+
+
+## 10. User interface
+
+
+Create a minimal, premium-looking game interface.
+
+
+### Start screen
+- Game title: MIDNIGHT RUN
+- Cinematic background with the character
+- Start Game button
+- Small controls guide
+
+
+### In-game HUD
+- Live score
+- Distance travelled
+- Energy tokens collected
+- Pause button
+
+
+### Game-over screen
+- Final score
+- Distance travelled
+- Tokens collected
+- Best score
+- Restart button
+
+
+Use clean typography, subtle transitions, and a restrained dark visual design.
+
+
+Store the best score locally in the browser.
+
+
+## 11. Audio design
+
+
+Include:
+
+
+- Running footsteps
+- Jump sound
+- Slide sound
+- Token collection sound
+- Collision sound
+- Atmospheric city ambience
+- Subtle background music
+
+
+Provide mute/unmute functionality.
+
+
+If audio files are not available, use suitable licensed assets or implement simple Web Audio effects as temporary fallbacks.
+
+
+Do not block gameplay because an audio asset fails to load.
+
+
+## 12. Performance optimization
+
+
+The game must run smoothly in a modern desktop browser.
+
+
+Implement:
+
+
+- Object pooling for obstacles and tokens
+- Reusable road and environment segments
+- Frustum culling
+- Instanced meshes for repeated objects when appropriate
+- Optimized draw calls
+- Compressed textures where possible
+- Efficient collision detection
+- Delta-time-based movement
+- Proper disposal of unused resources
+- Adaptive graphics settings if performance drops
+
+
+Target 60 FPS on capable desktop hardware while maintaining graceful performance on lower-end devices.
+
+
+## 13. Development architecture
+
+
+Organize the code into reusable modules, such as:
+
+
+- GameManager
+- PlayerController
+- CharacterAnimationController
+- CameraController
+- WorldGenerator
+- ObstacleManager
+- CollectibleManager
+- CollisionSystem
+- InputManager
+- AudioManager
+- UIManager
+- AssetLoader
+
+
+Use clean TypeScript architecture with clear separation between game state, rendering, input, and UI.
+
+
+## 14. Implementation sequence
+
+
+Follow this development order:
+
+
+**Phase 1: Playable foundation**
+- Initialize Three.js scene.
+- Set up camera, lighting, renderer, and game loop.
+- Create a road with three lanes.
+- Load the character.
+- Implement automatic running and lane switching.
+
+
+**Phase 2: Gameplay mechanics**
+- Add jumping and sliding.
+- Implement obstacles and collisions.
+- Add tokens and scoring.
+- Implement infinite level generation.
+- Add increasing difficulty.
+
+
+**Phase 3: Visual improvements**
+- Replace placeholders with high-quality 3D assets.
+- Improve character animations.
+- Add detailed city environments.
+- Implement realistic materials.
+- Add cinematic lighting and post-processing.
+
+
+**Phase 4: Game polish**
+- Implement UI and menus.
+- Add particles and sound.
+- Improve camera movement.
+- Optimize performance.
+- Fix collision and animation issues.
+
+
+**Phase 5: Testing**
+- Launch the game locally.
+- Verify that it starts successfully.
+- Test all controls and gameplay mechanics.
+- Check obstacle generation for impossible situations.
+- Test restart and pause flows.
+- Fix runtime errors and missing assets.
+- Ensure the production build completes successfully.
+
+
+## 15. Important development rules
+
+
+1. Do not stop after generating a project structure or code snippets.
+2. Create a complete, runnable game.
+3. Prefer working features over unnecessary complexity.
+4. Do not use a colored cube, capsule, or sphere as the final playable character.
+5. Do not depend on imaginary asset URLs or nonexistent files.
+6. Verify that every imported asset exists and loads correctly.
+7. Do not silently replace character animations with static poses.
+8. Keep the gameplay relatively simple while making the visuals impressive.
+9. Use original game design and assets rather than copying Temple Run's protected characters or artwork.
+10. Test and fix the code before considering the build finished.
+
+
+## 16. Final deliverable
+
+
+Deliver a complete browser-based 3D endless runner with:
+
+
+- A realistic leather-jacket character
+- An atmospheric 3D city
+- Functional endless running
+- Three-lane movement
+- Jumping and sliding
+- Obstacles and collision detection
+- Collectibles and score tracking
+- Functional game menus
+- Smooth camera movement
+- Cinematic visual effects
+- Optimized rendering
+
+
+Include the complete source code, project structure, asset dependencies, and instructions for running the game locally.
+
+
+**Start implementing the actual game now. Prioritize a playable vertical slice first, then improve visual quality and polish without breaking the working game.**
